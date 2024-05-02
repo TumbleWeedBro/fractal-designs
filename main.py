@@ -2,9 +2,9 @@ from turtle import *
 import random
 
 shape("turtle")
-speed(0)
-width(10)
-bgcolor("orange")
+speed(0.1)
+width(5)
+bgcolor("black")
 goto(0,0)
 # color("orange")
 def pattern(size, levels, angle):
@@ -35,6 +35,7 @@ def move():
         forward(60)
     pendown()
 
+# first shape
 # for i in range(4):
 #     move()
 
@@ -72,37 +73,97 @@ def create_snowflake(sides, length):
     for _ in range(sides):
         snowflake_side(length, sides)
         right(360 / sides)
-
+# create a snowflakes
+# create_snowflake(3,100)
 
 def create_weirdcircle(sides, size, angle, sides_multiplier, turn_angle):
     penup()
-    goto(random.randint(-200, 200), random.randint(-200, 200))
+    # goto(random.randint(-200, 200), random.randint(-200, 200))
     pendown()
     for _ in range(sides * sides_multiplier):
         snowflake_side(size, sides)
         right(angle / sides)
     penup()
     right(turn_angle)
-    # forward(size * 2)
+    forward(size * 2)
     pendown()
 # line_with_humps(100, 3, 30)
 
+
 def weird_circle(sides, size, angle, sides_multiplier, turn_angle, loop_range):
     for i in range(loop_range):
+
         create_weirdcircle(sides, size, angle, sides_multiplier, turn_angle)
         print(i)
 
+# ndivhu weird circle
+def nd_weird_circle(sides, size, angle, sides_multiplier, turn_angle,
+                    loop_range, x, y):
+    penup()
+    goto(x, y)
+    pendown()
+    begin_fill()
+    fillcolor("red")
+    circle(size*0.8)
+    end_fill()
+    for i in range(loop_range):
+        begin_fill()
+        if i % 2 == 0:
+            fillcolor("purple")
+
+        create_weirdcircle(sides, size, angle, sides_multiplier, turn_angle)
+        end_fill()
+        print(i)
+
+
 # spider circle
-# weird_circle(3, 100, 200, 1, 90,35)
-weird_circle(3,135,338,1,261,57)
+# penup()
+# goto(0, -150)
+# pendown()
+# weird_circle(2, 90, 200, 1, 90,38)
+# other weird circle
+# weird_circle(2, 200, 50, 1, 90, 19)
 
-size = random.randint(100,200)
-angle = random.randint(1,360)
-sides_multiplier = random.randint(1,10)
-turn_angle = random.randint(200,400)
-loop_range = random.randint(1,100)
+# Main program
+if __name__ == "__main__":
 
-print(f"size: {size} angle: {angle} sizes_multiplier: {sides_multiplier} turn_angle: {turn_angle} loop_range: {loop_range}")
+    x = 130
+    y = 150
+    x_axis = 0
+    y_at_axis = 0
+    circles = 0
+    while circles < 3:
+
+        for i in range(5):
+            penup()
+            if i == 0:
+                goto(x_axis+30, y_at_axis+20)
+                nd_weird_circle(1, 60, 50, 1, 90, 19, x_axis, y_at_axis)
+                weird_circle(1, 60, 50, 1, 90, 19)
+            else:
+                if i % 2 == 0:
+                    y *= -1
+                else:
+                    x *= -1
+                goto(x, y)
+                pendown()
+                nd_weird_circle(1, 40, 50, 1, 90, 19, x, y)
+                weird_circle(1, 40, 50, 1, 90, 19)  
+        circles += 1
+        x += 50
+        y += 100
+        x_axis += 200
+
+
+# weird_circle(3,135,338,1,261,57)
+
+# size = random.randint(100,200)
+# angle = random.randint(1,360)
+# sides_multiplier = random.randint(1,10)
+# turn_angle = random.randint(200,400)
+# loop_range = random.randint(1,100)
+
+# print(f"size: {size} angle: {angle} sizes_multiplier: {sides_multiplier} turn_angle: {turn_angle} loop_range: {loop_range}")
 
 # weird_circle(3, size, angle, sides_multiplier, turn_angle, loop_range)
 
