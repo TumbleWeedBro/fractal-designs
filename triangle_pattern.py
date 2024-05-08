@@ -30,13 +30,23 @@ def draw_triangle(size, color, direction):
             afro_turtle.left(120)
     afro_turtle.end_fill()
 
+
+def draw_rectangle(width, height):
+    afro_turtle.color("white")
+    for _ in range(2):
+        afro_turtle.begin_fill()
+        afro_turtle.forward(width)
+        afro_turtle.right(90)
+        afro_turtle.forward(height)
+        afro_turtle.right(90)
+        afro_turtle.end_fill()
 # Draw multiple rows of alternating triangles
 def draw_alternating_triangles():
     colors = ["red", "blue", "green"]
     size = 50
 
-    for row_index in range(10):
-        for col_index in range(10):
+    for row_index in range(16):
+        for col_index in range(14):
             if row_index % 2 == 0:
                 draw_triangle(size, colors[col_index % 3], 'up')
             else:
@@ -45,12 +55,16 @@ def draw_alternating_triangles():
             afro_turtle.forward(size * 1.5)
             afro_turtle.pendown()
 
-        afro_turtle.penup()
         if row_index % 2 == 0:
+            afro_turtle.penup()
             afro_turtle.goto(x_coord + 30, afro_turtle.ycor() - size * 2 + 40)
+            afro_turtle.pendown()
         else:
+            afro_turtle.penup()
             afro_turtle.goto(x_coord, afro_turtle.ycor() - size * 2 + 40)
-        afro_turtle.pendown()
+            afro_turtle.pendown()
+        draw_rectangle(size * 20, 10)
+
 
 # Call the draw_alternating_triangles function to draw rows of triangles
 draw_alternating_triangles()
