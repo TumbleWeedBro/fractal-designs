@@ -9,9 +9,11 @@ afro_turtle = turtle.Turtle()
 afro_turtle.speed(0)
 afro_turtle.color("yellow")
 
-# Use afro_turtle instead of turtle for penup and pendown operations
+# Use afro_turtle consistently for penup and pendown operations
+x_coord = -800
+y_coord = 200
 afro_turtle.penup()
-afro_turtle.goto(-200, 200)
+afro_turtle.goto(x_coord, y_coord)
 afro_turtle.pendown()
 
 # Function to draw a triangle
@@ -28,13 +30,24 @@ def draw_triangle(size, color, direction):
             afro_turtle.left(120)
     afro_turtle.end_fill()
 
+# Function to draw a white rectangle
+def draw_rectangle(width, height):
+    afro_turtle.color("white")
+    afro_turtle.begin_fill()
+    for _ in range(2):
+        afro_turtle.forward(width)
+        afro_turtle.right(90)
+        afro_turtle.forward(height)
+        afro_turtle.right(90)
+    afro_turtle.end_fill()
+
 # Draw multiple rows of alternating triangles
 def draw_alternating_triangles():
     colors = ["red", "blue", "green"]
     size = 50
 
-    for row_index in range(6):
-        for col_index in range(5):
+    for row_index in range(10):
+        for col_index in range(14):
             if row_index % 2 == 0:
                 draw_triangle(size, colors[col_index % 3], 'up')
             else:
@@ -43,9 +56,11 @@ def draw_alternating_triangles():
             afro_turtle.forward(size * 1.5)
             afro_turtle.pendown()
 
+        # Draw a white rectangle below each row of triangles
         afro_turtle.penup()
-        afro_turtle.goto(-200, afro_turtle.ycor() - size * 2 + 40)
+        afro_turtle.goto(x_coord, afro_turtle.ycor() - size * 2 + 40)
         afro_turtle.pendown()
+        draw_rectangle(size * 20, 10)  # Adjust the width of the rectangle as needed
 
 # Call the draw_alternating_triangles function to draw rows of triangles
 draw_alternating_triangles()
