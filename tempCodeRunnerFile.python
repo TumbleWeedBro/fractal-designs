@@ -1,0 +1,9 @@
+# Draw 3 rectangles vertically
+# for _ in range(3):
+#     draw_rectangle(rectangle_width, rectangle_height)
+#     t.penup()
+#     t.forward(0)  # Stay in the same column
+#     t.right(90)
+#     t.forward(rectangle_height + 20)  # Move down for the next rectangle
+#     t.left(90)
+#     t.pendown()
