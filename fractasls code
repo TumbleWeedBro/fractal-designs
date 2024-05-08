@@ -96,24 +96,6 @@
 #         create_weirdcircle(sides, size, angle, sides_multiplier, turn_angle)
 #         print(i)
 
-# # ndivhu weird circle
-# def nd_weird_circle(sides, size, angle, sides_multiplier, turn_angle,
-#                     loop_range, x, y):
-#     penup()
-#     goto(x, y)
-#     pendown()
-#     begin_fill()
-#     fillcolor("red")
-#     circle(size*0.8)
-#     end_fill()
-#     for i in range(loop_range):
-#         begin_fill()
-#         if i % 2 == 0:
-#             fillcolor("purple")
-
-#         create_weirdcircle(sides, size, angle, sides_multiplier, turn_angle)
-#         end_fill()
-#         print(i)
 
 
 # # spider circle
